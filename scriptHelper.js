@@ -5,16 +5,16 @@ function validateInput(testInput) {
       if(testInput === '' || testInput === null || testInput===0){
         return 'Empty';
       }else if (isNaN(Number(testInput))===true ){
-        return 'NotNumber';
+        return 'Not a Number';
       }else{
-        return 'IsNumber';}
+        return 'Is a Number';}
       };
 
 
 function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     
     if 
-    (validateInput(pilot.value) === 'IsNumber' || validateInput(copilot.value) === 'IsNumber' || validateInput(fuelLevel.value)=== 'NotNumber' || validateInput(cargoLevel.value) === 'NotNumber') {
+    (validateInput(pilot.value) === 'Is a Number' || validateInput(copilot.value) === 'Is a Number' || validateInput(fuelLevel.value)=== 'Not a Number' || validateInput(cargoLevel.value) === 'Not a Number') {
     alert('Incorrect input!');
     } else {
         pilotStatus.innerHTML = `Pilot: ${pilot.value} is ready for launch`;
@@ -38,7 +38,7 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
-    console.log(document.getElementById('missionTarget'))
+    //console.log(document.getElementById('missionTarget'))
     let missionTarget = document.getElementById('missionTarget')
     missionTarget.innerHTML = `<h2>Mission Destination</h2>
     <ol>
