@@ -4,27 +4,21 @@ require('isomorphic-fetch');
 function validateInput(testInput) {
       if(testInput === '' || testInput === null || testInput===0){
         return 'Empty';
-      }else if (isNaN(testInput)===true ){
+      }else if (isNaN(Number(testInput))===true ){
         return 'NotNumber';
-      }else if (isNaN(testInput)===false ){
-        return 'IsNumber';
+      }else{
+        return 'IsNumber';}
       };
-}
+
 
 function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
-    let pilotStatus = document.getElementById('pilotStatus');
-    let copilotStatus = document.getElementById('copilotStatus');
-    let fuelStatus = document.getElementById('fuelStatus');
-    let cargoStatus = document.getElementById('cargoStatus');
-    let faultyItems = document.getElementById('faultyItems');
-    let launchStatus = document.getElementById('launchStatus');
-
+    
     if 
     (validateInput(pilot.value) === 'IsNumber' || validateInput(copilot.value) === 'IsNumber' || validateInput(fuelLevel.value)=== 'NotNumber' || validateInput(cargoLevel.value) === 'NotNumber') {
     alert('Incorrect input!');
     } else {
-        pilotStatus.innerHTML = `Pilot: ${pilot.value}`;
-        copilotStatus.innerHTML = `Co-pilot: ${copilot.value}`
+        pilotStatus.innerHTML = `Pilot: ${pilot.value} is ready for launch`;
+        copilotStatus.innerHTML = `Co-pilot: ${copilot.value} is ready for launch`
         if (fuelLevel.value < 10000){
             fuelStatus.innerHTML =  'Fuel level is low for takeoff!';
             faultyItems.style.visibility = 'visible';
@@ -61,10 +55,10 @@ async function myFetch() {
     let planetsReturned;
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-        console.log(response)     
+        //console.log(response)     
         return response.json();
     });
-    console.log(planetsReturned);
+   // console.log(planetsReturned);
     return planetsReturned;
 }
 
